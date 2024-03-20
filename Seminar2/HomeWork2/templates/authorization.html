@@ -1,0 +1,15 @@
+<!-- Форма для ввода имени и электронной почты -->
+<!-- При отправке формы будет создан cookie-файл с данными пользователя -->
+<!-- После отправки произойдет перенаправление на страницу приветствия -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Авторизация</h2>
+    <form action="/set_cookie" method="post">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name"><br>
+        <label for="email">Электронная почта:</label>
+        <input type="text" id="email" name="email"><br>
+        <input type="submit" value="Отправить">
+    </form>
+{% endblock %}

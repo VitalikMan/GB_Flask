@@ -1,0 +1,11 @@
+<!-- Страница приветствия -->
+<!-- Покажет имя пользователя и будет кнопка "Выйти", при нажатии на которую будет удалён cookie-файл -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Добро пожаловать</h2>
+    <p>Привет, {{ username }}!</p>
+    <form action="/delete_cookie" method="post">
+        <input type="submit" value="Выйти">
+    </form>
+{% endblock %}
