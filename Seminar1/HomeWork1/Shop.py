@@ -6,14 +6,25 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 clothes = [
-    ['group', 'name', 'desc', 'id'],
-    ['Футболки', 'Классическая футболка', 'Описание "Классическая футболка"', 'tshirt_classic'],
-    ['Футболки', 'Принтованная футболка', 'Описание "Принтованная футболка"', 'tshirt_printed'],
-    ['Джинсы', 'Скинни джинсы', 'Описание "Скинни джинсы"', 'jeans_skinny'],
-    ['Джинсы', 'Прямые джинсы', 'Описание "Прямые джинсы"', 'jeans_straight'],
-    ['Платья', 'Коктейльное платье', 'Описание "Коктейльное платье"', 'dress_cocktail'],
-    ['Платья', 'Вечернее платье', 'Описание "Вечернее платье"', 'dress_evening'],
+    ["group", "name", "desc", "id"],
+    [
+        "Футболки",
+        "Классическая футболка",
+        'Описание "Классическая футболка"',
+        "tshirt_classic",
+    ],
+    [
+        "Футболки",
+        "Принтованная футболка",
+        'Описание "Принтованная футболка"',
+        "tshirt_printed",
+    ],
+    ["Джинсы", "Скинни джинсы", 'Описание "Скинни джинсы"', "jeans_skinny"],
+    ["Джинсы", "Прямые джинсы", 'Описание "Прямые джинсы"', "jeans_straight"],
+    ["Платья", "Коктейльное платье", 'Описание "Коктейльное платье"', "dress_cocktail"],
+    ["Платья", "Вечернее платье", 'Описание "Вечернее платье"', "dress_evening"],
 ]
+
 
 def parse_clothes_to_dict() -> list:
     res = []
@@ -24,55 +35,61 @@ def parse_clothes_to_dict() -> list:
         res.append(new_dict)
     return res
 
-@app.route('/')
+
+@app.route("/")
 def index():
     context = {
-        'title': 'Главная',
+        "title": "Главная",
     }
-    return render_template('index.html', **context)
+    return render_template("index.html", **context)
 
-@app.route('/categories/')
+
+@app.route("/categories/")
 def categories():
     _clothes = parse_clothes_to_dict()
     context = {
-        'title': 'Категории',
-        'categories': [
-            'Футболки',
-            'Джинсы',
-            'Платья',
+        "title": "Категории",
+        "categories": [
+            "Футболки",
+            "Джинсы",
+            "Платья",
         ],
-        'clothes': _clothes,
+        "clothes": _clothes,
     }
-    return render_template('categories.html', **context)
+    return render_template("categories.html", **context)
 
-@app.route('/about/')
+
+@app.route("/about/")
 def about():
     context = {
-        'title': 'О нас',
+        "title": "О нас",
     }
-    return render_template('about.html', **context)
+    return render_template("about.html", **context)
 
-@app.route('/contacts/')
+
+@app.route("/contacts/")
 def contacts():
     context = {
-        'title': 'Контакты',
+        "title": "Контакты",
     }
-    return render_template('contacts.html', **context)
+    return render_template("contacts.html", **context)
 
-@app.route('/clothes/item/', methods=['GET', 'POST'])
+
+@app.route("/clothes/item/", methods=["GET", "POST"])
 def item():
-    selected_item = request.args.get('selected_from_cats')
+    selected_item = request.args.get("selected_from_cats")
     _clothes = parse_clothes_to_dict()
     show_item = {}
     for item_dict in _clothes:
-        if item_dict['name'] == selected_item:
+        if item_dict["name"] == selected_item:
             show_item = dict(item_dict)
     context = {
-        'title': 'Карточка товара',
-        'selected': selected_item,
-        'item': show_item,
+        "title": "Карточка товара",
+        "selected": selected_item,
+        "item": show_item,
     }
-    return render_template('item.html', **context)
+    return render_template("item.html", **context)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run(debug=True)

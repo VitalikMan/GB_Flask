@@ -22,11 +22,12 @@ app = Flask(__name__)
 # def sum_nums(num_1, num_2) -> str:
 #     return str(num_1 + num_2)
 
+
 # Задание 3
-@app.route('/string/<string:name>')
+@app.route("/string/<string:name>")
 def text(name: str) -> str:
     return str(len(name))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)

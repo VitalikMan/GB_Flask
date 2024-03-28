@@ -7,21 +7,22 @@ app = Flask(__name__)
 # def index():
 #     return 'Hello World!'
 
+
 # Задание 2
-@app.route('/about/')
+@app.route("/about/")
 def about():
-    return 'about'
+    return "about"
 
 
-@app.route('/contact/')
+@app.route("/contact/")
 def contact():
-    return 'contact'
+    return "contact"
 
 
-@app.route('/<int:num_1>/<int:num_2>')
+@app.route("/<int:num_1>/<int:num_2>")
 def sum_nums(num_1, num_2) -> str:
     return str(num_1 + num_2)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run()

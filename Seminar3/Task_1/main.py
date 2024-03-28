@@ -15,42 +15,37 @@ from Seminar3.Task_1.models import db, Student, Faculty
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///mydatabase.db"
 db.init_app(app)
 
 
 @app.cli.command("init-db")
 def init_db():
-	db.create_all()
-	print('OK')
+    db.create_all()
+    print("OK")
 
 
 @app.cli.command("add-student")
 def add_data():
-	for i in range(1, 3):
-		faculty = Faculty(
-			name=f'faculty_{i}'
-		)
-		db.session.add(faculty)
+    for i in range(1, 3):
+        faculty = Faculty(name=f"faculty_{i}")
+        db.session.add(faculty)
 
-	for i in range(1, 10):
-		student = Student(
-			firstname=f'firstname_{i}',
-			lastname=f'lastname_{i}',
-			gender=random.choice(['муж', 'жен']),
-			group=random.randint(1, 5),
-			id_faculty=random.randint(1, 3)
-		)
-		db.session.add(student)
-	db.session.commit()
-	print("Данные добавлены")
+    for i in range(1, 10):
+        student = Student(
+            firstname=f"firstname_{i}",
+            lastname=f"lastname_{i}",
+            gender=random.choice(["муж", "жен"]),
+            group=random.randint(1, 5),
+            id_faculty=random.randint(1, 3),
+        )
+        db.session.add(student)
+    db.session.commit()
+    print("Данные добавлены")
 
 
-@app.route('/')
+@app.route("/")
 def get_student():
-	students = Student.query.all()
-	context = {
-		"students": students
-	}
-	return render_template('students.html', **context)
-
+    students = Student.query.all()
+    context = {"students": students}
+    return render_template("students.html", **context)

@@ -27,11 +27,12 @@ app = Flask(__name__)
 # def text(name: str) -> str:
 #     return str(len(name))
 
+
 # Задание 4
-@app.route('/world')
+@app.route("/world")
 def world():
-    return render_template('index.html')
+    return render_template("index.html")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)

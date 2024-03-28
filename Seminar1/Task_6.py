@@ -2,7 +2,7 @@ from datetime import datetime
 
 from flask import Flask, render_template
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder="templates")
 
 # # Задание 1
 # @app.route('/')
@@ -67,28 +67,28 @@ app = Flask(__name__, template_folder='templates')
 
 
 # Задание 6
-@app.route('/news/')
+@app.route("/news/")
 def students():
 
     news_block = [
         {
-            'title': 'Новость_1',
-            'description': 'описание_1',
-            'create_at': datetime.now().strftime('%H:%M - %m.%d.%Y года')
+            "title": "Новость_1",
+            "description": "описание_1",
+            "create_at": datetime.now().strftime("%H:%M - %m.%d.%Y года"),
         },
         {
-            'title': 'Новость_2',
-            'description': 'описание_2',
-            'create_at': datetime.now().strftime('%H:%M - %m.%d.%Y года')
+            "title": "Новость_2",
+            "description": "описание_2",
+            "create_at": datetime.now().strftime("%H:%M - %m.%d.%Y года"),
         },
         {
-            'title': 'Новость_3',
-            'description': 'описание_3',
-            'create_at': datetime.now().strftime('%H:%M - %m.%d.%Y года')
-        }
+            "title": "Новость_3",
+            "description": "описание_3",
+            "create_at": datetime.now().strftime("%H:%M - %m.%d.%Y года"),
+        },
     ]
-    return render_template('news.html', news_block=news_block)
+    return render_template("news.html", news_block=news_block)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)

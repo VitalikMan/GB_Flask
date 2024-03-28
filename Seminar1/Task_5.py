@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder="templates")
 
 # # Задание 1
 # @app.route('/')
@@ -32,37 +32,23 @@ app = Flask(__name__, template_folder='templates')
 # def world():
 #     return render_template('index.html')
 
+
 # Задание 5
-@app.route('/students/')
+@app.route("/students/")
 def students():
     head = {
-        'name': 'Имя',
-        'lastname': 'Фамилия',
-        'age': 'Возраст',
-        'rating': 'Средний балл'
+        "name": "Имя",
+        "lastname": "Фамилия",
+        "age": "Возраст",
+        "rating": "Средний балл",
     }
     students_list = [
-        {
-            'name': 'Иван',
-            'lastname': 'Иванов',
-            'age': 18,
-            'rating': 4
-        },
-        {
-            'name': 'Петр',
-            'lastname': 'Петров',
-            'age': 19,
-            'rating': 3
-        },
-        {
-            'name': 'Семен',
-            'lastname': 'Семенов',
-            'age': 20,
-            'rating': 5
-        }
+        {"name": "Иван", "lastname": "Иванов", "age": 18, "rating": 4},
+        {"name": "Петр", "lastname": "Петров", "age": 19, "rating": 3},
+        {"name": "Семен", "lastname": "Семенов", "age": 20, "rating": 5},
     ]
-    return render_template('index.html', **head, students_list=students_list)
+    return render_template("index.html", **head, students_list=students_list)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
